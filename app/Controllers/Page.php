@@ -17,4 +17,9 @@ class Page extends BaseController
 		echo "ini kurubah";
 	}
 
+	public function tambah()
+	{
+		echo "anu ditambah tambah wkwk";
+	}
+
 }
