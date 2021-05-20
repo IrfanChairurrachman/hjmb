@@ -9,12 +9,12 @@ class Page extends BaseController
     
     public function contact()
 	{
-		echo "contact page";
+		echo " ";
 	}
     
     public function faqs()
 	{
-		echo "Faqs page";
+		echo "ini kurubah";
 	}
 
 }
