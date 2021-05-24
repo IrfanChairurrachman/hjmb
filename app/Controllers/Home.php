@@ -12,4 +12,8 @@ class Home extends BaseController
 	{
 		return view('about');
 	}
+	public function dashboard()
+	{
+		return view('welcome_message');
+	}
 }
