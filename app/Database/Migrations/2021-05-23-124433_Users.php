@@ -16,14 +16,22 @@ class Users extends Migration
                 'unsigned'          => TRUE,
                 'auto_increment'    => TRUE
             ],
-            'username'         => [
+            'username'              => [
                 'type'              => 'VARCHAR',
                 'constraint'        => '100',
             ],
-            'password'         => [
+            'name'                  => [
                 'type'              => 'VARCHAR',
                 'constraint'        => '100',
-            ]
+            ],
+            'email'                 => [
+                'type'              => 'VARCHAR',
+                'constraint'        => '100',
+            ],
+            'password'              => [
+                'type'              => 'VARCHAR',
+                'constraint'        => '255',
+            ],
         ]);
         $this->forge->addKey('id', TRUE);
         $this->forge->createTable('users');
