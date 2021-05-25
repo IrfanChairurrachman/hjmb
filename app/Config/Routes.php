@@ -60,6 +60,10 @@ $routes->get('admin/category/delete/(:num)', 'Category::delete/$1');
 $routes->get('admin/product', 'Product::index', ['filter' => 'ceklogin']);
 $routes->get('admin/product/create', 'Product::create', ['filter' => 'ceklogin']);
 $routes->post('admin/product/store', 'Product::store', ['filter' => 'ceklogin']);
+$routes->get('admin/product/show/(:num)', 'Product::show/$1', ['filter' => 'ceklogin']);
+$routes->get('admin/product/edit/(:num)', 'Product::edit/$1', ['filter' => 'ceklogin']);
+$routes->post('admin/product/update/(:num)', 'Product::update', ['filter' => 'ceklogin']);
+$routes->get('admin/product/delete/(:num)', 'Product::delete/$1');
 
 
 // $routes->group('admin', ['filter' => 'ceklogin'], function($routes) {
