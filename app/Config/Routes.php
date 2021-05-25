@@ -50,13 +50,17 @@ $routes->post('login/proses', 'Login::proses');
 
 // ADMIN ROUTE
 $routes->get('admin', 'Home::admin', ['filter' => 'ceklogin']);
-$routes->get('admin/product', 'Admin::product', ['filter' => 'ceklogin']);
 $routes->get('admin/category', 'Category::index', ['filter' => 'ceklogin']);
 $routes->get('admin/category/create', 'Category::create', ['filter' => 'ceklogin']);
 $routes->post('admin/category/create', 'Category::store', ['filter' => 'ceklogin']);
 $routes->get('admin/category/edit/(:num)', 'Category::edit/$1', ['filter' => 'ceklogin']);
 $routes->post('admin/category/update', 'Category::update', ['filter' => 'ceklogin']);
 $routes->get('admin/category/delete/(:num)', 'Category::delete/$1');
+
+$routes->get('admin/product', 'Product::index', ['filter' => 'ceklogin']);
+$routes->get('admin/product/create', 'Product::create', ['filter' => 'ceklogin']);
+$routes->post('admin/product/store', 'Product::store', ['filter' => 'ceklogin']);
+
 
 // $routes->group('admin', ['filter' => 'ceklogin'], function($routes) {
 	//     $routes->get('admin', 'Admin::index');
