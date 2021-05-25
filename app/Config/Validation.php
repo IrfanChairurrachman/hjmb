@@ -36,7 +36,20 @@ class Validation
 		'list'   => 'CodeIgniter\Validation\Views\list',
 		'single' => 'CodeIgniter\Validation\Views\single',
 	];
-
+	
+	public $category = [
+        'category_name'     => 'required',
+        'category_status'     => 'required'
+    ];
+     
+    public $category_errors = [
+        'category_name' => [
+            'required'    => 'Nama category wajib diisi.',
+        ],
+        'category_status'    => [
+            'required' => 'Status category wajib diisi.'
+        ]
+    ];
 	//--------------------------------------------------------------------
 	// Rules
 	//--------------------------------------------------------------------

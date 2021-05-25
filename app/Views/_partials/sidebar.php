@@ -35,13 +35,13 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?php echo base_url('transaction'); ?>" class="nav-link">
+                    <a href="<?php echo base_url('admin/news'); ?>" class="nav-link">
                         <i class="nav-icon fas fa-dollar-sign"></i>
                         <p>Berita</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?php echo base_url('transaction'); ?>" class="nav-link">
+                    <a href="<?php echo base_url('admin/article'); ?>" class="nav-link">
                         <i class="nav-icon fas fa-dollar-sign"></i>
                         <p>Artikel</p>
                     </a>
