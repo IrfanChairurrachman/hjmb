@@ -26,7 +26,7 @@ class Login extends BaseController
             session()->set("username", $cek_login['username']);
             session()->set("password", $cek_login['password']);
  
-            return redirect()->to('/home');
+            return redirect()->to('/admin');
  
         } else {
  

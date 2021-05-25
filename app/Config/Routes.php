@@ -18,27 +18,36 @@ if (file_exists(SYSTEMPATH . 'Config/Routes.php'))
  * --------------------------------------------------------------------
  */
 $routes->setDefaultNamespace('App\Controllers');
-$routes->setDefaultController('Login');
+$routes->setDefaultController('Home');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
-$routes->setAutoRoute(true);
+$routes->setAutoRoute(false);
 
 /*
- * --------------------------------------------------------------------
- * Route Definitions
- * --------------------------------------------------------------------
- */
+* --------------------------------------------------------------------
+* Route Definitions
+* --------------------------------------------------------------------
+*/
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
+$routes->get('/', 'Home::index');
+
 $routes->get('login', 'Login::index');
 $routes->post('login/proses', 'Login::proses');
  
-$routes->get('/home', 'Home::dashboard', ['filter' => 'ceklogin']);
+$routes->get('admin', 'Admin::index', ['filter' => 'ceklogin']);
+$routes->get('admin/product', 'Admin::product', ['filter' => 'ceklogin']);
+
+// $routes->group('admin', ['filter' => 'ceklogin'], function($routes) {
+//     $routes->get('admin', 'Admin::index');
+//     $routes->get('admin/product', 'Admin::product');
+//     $routes->post('admin/news', 'Admin::news');
+// });
+
 $routes->get('/logout', 'Login::logout', ['filter' => 'ceklogin']);
 
-// $routes->get('/', 'Home::index');
 // $routes->get('/produk', 'Page::produk');
 // $routes->get('/berita', 'Page::berita');
 // $routes->get('/service', 'Page::service');
