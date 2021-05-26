@@ -65,6 +65,14 @@ $routes->get('admin/product/edit/(:num)', 'Product::edit/$1', ['filter' => 'cekl
 $routes->post('admin/product/update/(:num)', 'Product::update', ['filter' => 'ceklogin']);
 $routes->get('admin/product/delete/(:num)', 'Product::delete/$1');
 
+$routes->get('admin/news', 'News::index', ['filter' => 'ceklogin']);
+$routes->get('admin/news/show/(:num)', 'News::show/$1', ['filter' => 'ceklogin']);
+$routes->get('admin/news/create', 'News::create', ['filter' => 'ceklogin']);
+$routes->post('admin/news/store', 'News::store', ['filter' => 'ceklogin']);
+$routes->get('admin/news/edit/(:num)', 'News::edit/$1', ['filter' => 'ceklogin']);
+$routes->post('admin/news/update/(:num)', 'News::update', ['filter' => 'ceklogin']);
+$routes->get('admin/news/delete/(:num)', 'News::delete/$1');
+
 
 // $routes->group('admin', ['filter' => 'ceklogin'], function($routes) {
 	//     $routes->get('admin', 'Admin::index');

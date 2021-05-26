@@ -6,12 +6,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0 text-dark">Edit Product</h1>
+          <h1 class="m-0 text-dark">Edit Berita</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Edit Product</li>
+            <li class="breadcrumb-item active">Edit Berita</li>
           </ol>
         </div>
       </div>
@@ -36,34 +36,30 @@
             </div>
           <?php } ?>
           <div class="card">
-            <?php echo form_open_multipart('admin/product/update/'.$product['product_id']); ?>
+            <?php echo form_open_multipart('admin/news/update/'.$news['news_id']); ?>
               <div class="card-header">Form Edit Produk</div>
               <div class="card-body">
-                <?php echo form_hidden('product_id', $product['product_id']); ?>
+                <?php echo form_hidden('news_id', $news['news_id']); ?>
                 <div class="row">
                   <div class="col-md-4">
                     <div class="form-group">
                       <?php echo form_label('Image', 'Image'); ?>
                       <br>
-                      <img src="<?php echo base_url('uploads/'.$product['product_image']) ?>" class="img-fluid">
+                      <img src="<?php echo base_url('uploads/'.$news['news_image']) ?>" class="img-fluid">
                       <br>
                       <br>
                       <?php echo form_label('Ganti Image', 'Ganti Image'); ?>
-                      <?php echo form_upload('product_image', $product['product_image'], ['class' => 'form-control', 'placeholder' => 'Product Image']); ?>
+                      <?php echo form_upload('news_image', $news['news_image'], ['class' => 'form-control', 'placeholder' => 'News Image']); ?>
                     </div>
                   </div>
                   <div class="col-md-8">
-                    <div class="form-group"> 
-                      <?php echo form_label('Category', 'Category'); ?>
-                      <?php echo form_dropdown('category_id', $categories, $product['category_id'], ['class' => 'form-control']); ?>
-                    </div>
                     <div class="form-group">
                       <?php echo form_label('Name', 'Name'); ?>
-                      <?php echo form_input('product_name', $product['product_name'], ['class' => 'form-control', 'placeholder' => 'Product Name']); ?>
+                      <?php echo form_input('news_title', $news['news_title'], ['class' => 'form-control', 'placeholder' => 'Judul Berita']); ?>
                     </div>
                     <div class="form-group">
                       <?php echo form_label('Price', 'Price'); ?>
-                      <?php echo form_input('product_price', $product['product_price'], ['class' => 'form-control', 'placeholder' => 'Product Price', 'type' => 'number']); ?>
+                      <?php echo form_input('news_author', $news['news_author'], ['class' => 'form-control', 'placeholder' => 'news Price', 'type' => 'number']); ?>
                     </div>
                   </div>
                 </div>
@@ -71,17 +67,17 @@
                   <div class="col-md-12">
                     <div class="form-group">
                       <?php echo form_label('Status', 'Status'); ?>
-                      <?php echo form_dropdown('product_status', ['' => 'Pilih', 'Active' => 'Active', 'Inactive' => 'Inactive'], $product['product_status'], ['class' => 'form-control']); ?>
+                      <?php echo form_dropdown('news_status', ['' => 'Pilih', 'published' => 'published', 'draft' => 'draft'], $news['news_status'], ['class' => 'form-control']); ?>
                     </div>
                     <div class="form-group">
                       <?php echo form_label('Description', 'Description'); ?>
-                      <?php echo form_textarea('product_description', $product['product_description'], ['class' => 'form-control', 'placeholder' => 'Product Description']); ?>
+                      <?php echo form_textarea('news_content', $news['news_content'], ['class' => 'form-control', 'placeholder' => 'Konten Berita']); ?>
                     </div>
                   </div>
                 </div>
               </div>
               <div class="card-footer">
-                  <a href="<?php echo base_url('admin/product'); ?>" class="btn btn-outline-info">Back</a>
+                  <a href="<?php echo base_url('admin/news'); ?>" class="btn btn-outline-info">Back</a>
                   <button type="submit" class="btn btn-primary float-right">Update</button>
               </div>
             <?php echo form_close(); ?>

@@ -81,6 +81,35 @@ class Validation
 			'required'          => 'Description product wajib diisi.'
 		]
 	];
+
+	// NEWS VALIDATION
+	public $news = [
+		'news_title'          => 'required',
+		'news_author'         => 'required',
+		'news_content'        => 'required',
+		'news_image'         => 'uploaded[news_image]|mime_in[news_image,image/jpg,image/jpeg,image/gif,image/png]|max_size[news_image,1000]',
+		'news_status'   => 'required'
+	];
+	 
+	public $news_errors = [
+		'news_title'  => [
+			'required'  => 'Judul berita wajib diisi.'
+		],
+		'news_author' => [
+			'required'  => 'Penulis berita wajib diisi.'
+		],
+		'news_content'   => [
+			'required'          => 'konten berita wajib diisi.'
+		],
+		'news_image'=> [
+			'mime_in'   => 'Gambar news hanya boleh diisi dengan jpg, jpeg, png atau gif.',
+			'max_size'  => 'Gambar news maksimal 1mb',
+			'uploaded'  => 'Gambar berita wajib diisi'
+		],
+		'news_status'=> [
+			'required'  => 'Status berita wajib diisi.'
+		]
+	];
 	//--------------------------------------------------------------------
 	// Rules
 	//--------------------------------------------------------------------
