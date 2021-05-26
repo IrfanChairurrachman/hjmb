@@ -7,9 +7,9 @@
  
 <footer class="main-footer">
     <div class="float-right d-none d-sm-inline">
-        Sistem Informasi Penjualan
+        Admin Website HJMB
     </div>
-    <strong>Copyright © 2014-2019 <a href="<?php echo base_url('/'); ?>">SIP Online</a>.</strong> All rights reserved.
+    <strong>Copyright © 2021 <a href="<?php echo base_url('/'); ?>">HJMB Website by Cinikimi</a>.</strong> All rights reserved.
 </footer>
 </div>
  
