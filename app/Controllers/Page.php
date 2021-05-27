@@ -1,14 +1,29 @@
 <?php namespace App\Controllers;
+use App\Models\News_model;
+use App\Models\Product_model;
+use App\Models\Category_model;
 
 class Page extends BaseController
 {
+	protected $helpers = [];
+ 
+    public function __construct()
+    {
+        helper(['form']);
+        $this->news_model = new News_model();
+		$this->category_model = new Category_model();
+        $this->product_model = new Product_model();
+    }
+
 	public function produk()
 	{
-		return view('produk');
+		$data['products'] = $this->product_model->getProduct();
+		return view('produk', $data);
 	}
 	public function berita()
 	{
-		return view('berita');
+		$data['news'] = $this->news_model->getNews();
+		return view('berita', $data);
 	}
 	// public function berita{id}()
 	// {

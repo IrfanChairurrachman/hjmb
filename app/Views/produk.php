@@ -63,72 +63,21 @@
                         <div class="tab-pane fade active show" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                             <div class="project-caption">
                                 <div class="row">
+                                <?php $nomor = 0; foreach($products as $key => $row){ ?>
                                     <div class="col-lg-4 col-md-6">
                                         <div class="single-project mb-30">
                                             <div class="project-img">
-                                                <img src="assets/img/gallery/Pipa/RAJALON.jpg" alt="">
+                                                <img src="<?php echo base_url('uploads/'.$row['product_image']) ?>" alt="">
                                             </div>
                                             <div class="project-cap">
                                                 <a href="project_details.html" class="plus-btn"><i class="ti-plus"></i></a>
-                                                <h4><a href="project_details.html">Pipa Rajalon</a></h4>
+                                                <h4><a href="project_details.html"><?php echo $row['product_name']; ?></a></h4>
+                                                <h6><?php echo "Rp. ".number_format($row['product_price']); ?></h6>
+                                                <p><?php echo $row['product_description']; ?></p>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-4 col-md-6">
-                                        <div class="single-project mb-30">
-                                            <div class="project-img">
-                                                <img src="assets/img/gallery/Pipa/RAJALON.jpg" alt="">
-                                            </div>
-                                            <div class="project-cap">
-                                                <a href="project_details.html" class="plus-btn"><i class="ti-plus"></i></a>
-                                                <h4><a href="project_details.html">Pipa Rajalon</a></h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6">
-                                        <div class="single-project mb-30">
-                                            <div class="project-img">
-                                                <img src="assets/img/gallery/Pipa/TWO HORSES AW.jpg" alt="">
-                                            </div>
-                                            <div class="project-cap">
-                                                <a href="project_details.html" class="plus-btn"><i class="ti-plus"></i></a>
-                                                <h4><a href="project_details.html">Pipa Two Horses AW</a></h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6">
-                                        <div class="single-project mb-30">
-                                            <div class="project-img">
-                                                <img src="assets/img/gallery/Pipa/TWO HORSES D.jpg" alt="">
-                                            </div>
-                                            <div class="project-cap">
-                                                <a href="project_details.html" class="plus-btn"><i class="ti-plus"></i></a>
-                                                <h4><a href="project_details.html">Pipa Two Horses D</a></h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6">
-                                        <div class="single-project mb-30">
-                                            <div class="project-img">
-                                                <img src="assets/img/gallery/Spandek/1.JPG" alt="">
-                                            </div>
-                                            <div class="project-cap">
-                                                <a href="project_details.html" class="plus-btn"><i class="ti-plus"></i></a>
-                                                <h4><a href="project_details.html">Seng Spandek Galv AZ100 KR5</a></h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6">
-                                        <div class="single-project mb-30">
-                                            <div class="project-img">
-                                                <img src="assets/img/gallery/Spandek/2.JPG" alt="">
-                                            </div>
-                                            <div class="project-cap">
-                                                <a href="project_details.html" class="plus-btn"><i class="ti-plus"></i></a>
-                                                <h4><a href="project_details.html">Seng Spandek Galv AZ100 KR5</a></h4>
-                                            </div>
-                                        </div>
-                                    </div>  
+                                <?php } ?>
                                 </div>
                             </div>
                         </div>
