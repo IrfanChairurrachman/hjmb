@@ -53,6 +53,7 @@ $routes->post('login/proses', 'Login::proses');
 
 // ADMIN ROUTE
 $routes->get('admin', 'Home::admin', ['filter' => 'ceklogin']);
+$routes->get('admin/info/edit/(:num)', 'Home::info_edit/$1', ['filter' => 'ceklogin']);
 $routes->get('admin/category', 'Category::index', ['filter' => 'ceklogin']);
 $routes->get('admin/category/create', 'Category::create', ['filter' => 'ceklogin']);
 $routes->post('admin/category/create', 'Category::store', ['filter' => 'ceklogin']);

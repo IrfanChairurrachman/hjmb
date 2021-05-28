@@ -4,6 +4,7 @@ namespace App\Controllers;
 use App\Models\Product_model;
 use App\Models\Category_model;
 use App\Models\News_model;
+use App\Models\Info_model;
 
 class Home extends BaseController
 {
@@ -15,6 +16,7 @@ class Home extends BaseController
         $this->news_model = new News_model();
 		$this->category_model = new Category_model();
         $this->product_model = new Product_model();
+		$this->info_model = new Info_model();
     }
 
 	public function index()
@@ -25,6 +27,14 @@ class Home extends BaseController
 	}
 	public function admin()
 	{
-		return view('dashboard');
+		$data['info'] = $this->info_model->getInfo();
+		// dd($data);
+		return view('admin', $data);
+	}
+	public function info_edit()
+	{
+		$data['info'] = $this->info_model->getInfo();
+		// dd($data);
+		return view('admin/info_edit', $data);
 	}
 }
