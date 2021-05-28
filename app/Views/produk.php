@@ -70,8 +70,8 @@
                                                 <img src="<?php echo base_url('uploads/'.$row['product_image']) ?>" alt="">
                                             </div>
                                             <div class="project-cap">
-                                                <a href="project_details.html" class="plus-btn"><i class="ti-plus"></i></a>
-                                                <h4><a href="project_details.html"><?php echo $row['product_name']; ?></a></h4>
+                                                <a href="<?php $slug = str_replace(' ', '_', $row['product_name']);echo base_url('detail/'.$slug) ?>" class="plus-btn"><i class="ti-plus"></i></a>
+                                                <h4><a href="<?php $slug = str_replace(' ', '_', $row['product_name']);echo base_url('detail/'.$slug) ?>"><?php echo $row['product_name']; ?></a></h4>
                                                 <h6><?php echo "Rp. ".number_format($row['product_price']); ?></h6>
                                                 <p><?php echo $row['product_description']; ?></p>
                                             </div>

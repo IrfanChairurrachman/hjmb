@@ -41,12 +41,12 @@
                         </div>
 
                         <div class="blog_details">
-                            <a class="d-inline-block" href="single-blog.html">
+                            <a class="d-inline-block" href="<?php $slug = str_replace(' ', '_', $row['news_title']);echo base_url('detail/'.$slug) ?>">
                                 <h2><?php echo $row['news_title']; ?></h2>
                             </a>
                             <p><?php echo $row['news_content']; ?></p>
                             <ul class="blog-info-link">
-                                <li><a href="#"><i class="fa fa-user"></i><?php echo $row['news_author']; ?></a></li>
+                                <li><i class="fa fa-user"></i><?php echo $row['news_author']; ?></li>
                             </ul>
                         </div>
                     </article>
