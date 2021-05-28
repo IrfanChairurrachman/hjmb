@@ -38,19 +38,31 @@
                   </div>
                   <?php } ?>
  
-                  <input type="hidden" name="category_id" value="">
+                  <input type="hidden" name="info_id" value="<?= $info[0]['info_id']?>">
                   <div class="form-group">
                       <label for="">Name</label>
-                      <input type="text" value="" class="form-control" name="category_name" placeholder="Enter category name">
+                      <input type="text" value="<?= $info[0]['info_name']?>" class="form-control" name="info_name" placeholder="Enter name">
                   </div>
                   <div class="form-group">
-                      <label for="">Name</label>
-                      <input type="text" value="" class="form-control" name="category_name" placeholder="Enter category name">
+                      <label for="">Email</label>
+                      <input type="text" value="<?= $info[0]['info_email']?>" class="form-control" name="info_email" placeholder="Enter email">
+                  </div>
+                  <div class="form-group">
+                      <label for="">Kontak 1</label>
+                      <input type="text" value="<?= $info[0]['info_contact1']?>" class="form-control" name="info_contact1" placeholder="Enter kontak1">
+                  </div>
+                  <div class="form-group">
+                      <label for="">Kontak 2</label>
+                      <input type="text" value="<?= $info[0]['info_contact2']?>" class="form-control" name="info_contact2" placeholder="Enter kontak2">
+                  </div>
+                  <div class="form-group">
+                      <label for="">Alamat</label>
+                      <textarea type="textarea" class="form-control" name="info_alamat" placeholder="Enter alamat"><?= $info[0]['info_alamat']?></textarea>
                   </div>
  
                 </div>
                 <div class="card-footer">
-                    <a href="<?php echo base_url('admin/category'); ?>" class="btn btn-outline-info">Back</a>
+                    <a href="<?php echo base_url('admin'); ?>" class="btn btn-outline-info">Back</a>
                     <button type="submit" class="btn btn-primary float-right">Update</button>
                 </div>
               </div>

@@ -37,4 +37,27 @@ class Home extends BaseController
 		// dd($data);
 		return view('admin/info_edit', $data);
 	}
+	public function info_update()
+	{
+		$id = $this->request->getPost('info_id');
+
+		$data = array(
+            'info_id' => $this->request->getPost('info_id'),
+            'info_name' => $this->request->getPost('info_name'),
+            'info_contact1' => $this->request->getPost('info_contact1'),
+            'info_contact2' => $this->request->getPost('info_contact2'),
+            'info_email' => $this->request->getPost('info_email'),
+            'info_alamat' => $this->request->getPost('info_alamat'),
+        );
+		// dd($data);
+		$ubah = $this->info_model->updateInfo($data, $id);
+
+		if($ubah)
+		{
+			session()->setFlashdata('info', 'Updated Information successfully');
+			return redirect()->to(base_url('admin')); 
+		}
+		echo "UWAW";
+		return view('admin/info_edit', $data);
+	}
 }

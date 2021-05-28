@@ -58,7 +58,7 @@ class Category extends BaseController
             'category_name'     => $this->request->getPost('category_name'),
             'category_status'   => $this->request->getPost('category_status'),
         );
-        
+        // dd($data);
         if($validation->run($data, 'category') == FALSE){
             session()->setFlashdata('inputs', $this->request->getPost());
             session()->setFlashdata('errors', $validation->getErrors());

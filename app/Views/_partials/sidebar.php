@@ -46,6 +46,12 @@
                         <p>Artikel</p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="<?php echo base_url('admin/feedback'); ?>" class="nav-link">
+                        <i class="nav-icon fas fa-dollar-sign"></i>
+                        <p>Feedback</p>
+                    </a>
+                </li>
                 <li class="nav-header">ACCOUNT</li>
                 <li class="nav-item">
                     <a href="<?php echo base_url('logout'); ?>" class="nav-link">
