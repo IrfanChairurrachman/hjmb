@@ -15,14 +15,14 @@ class NewsSeeder extends Seeder
 				'news_author'   => 'John Doe',
 				'news_status'   => 'Published',
 				'news_image'   => 'RAJALON.jpg',
-				'news_content'   => 'Ini berita tentang Pipa Rajalon yang memang Raja'
+				'news_content'   => 'Ini berita tentang Pipa Rajalon yang memang Raja Ini berita tentang Pipa Rajalon yang memang RajaIni berita tentang Pipa Rajalon yang memang RajaIni berita tentang Pipa Rajalon yang memang RajaIni berita tentang Pipa Rajalon yang memang RajaIni berita tentang Pipa Rajalon yang memang RajaIni berita tentang Pipa Rajalon yang memang RajaIni berita tentang Pipa Rajalon yang memang RajaIni berita tentang Pipa Rajalon yang memang RajaIni berita tentang Pipa Rajalon yang memang Raja'
 			],
 			[
 				'news_title'   => 'Seng Spandek Galv AZ100 KR5',
 				'news_author'   => 'admin2',
 				'news_status'   => 'Published',
 				'news_image'   => 'sengspandek1.jpeg',
-				'news_content'   => 'Ini berita tentang Seng Spandek luar biasa tahan puting beliung'
+				'news_content'   => 'Ini berita tentang Seng Spandek luar biasa tahan puting beliung Ini berita tentang Seng Spandek luar biasa tahan puting beliungIni berita tentang Seng Spandek luar biasa tahan puting beliungIni berita tentang Seng Spandek luar biasa tahan puting beliungIni berita tentang Seng Spandek luar biasa tahan puting beliungIni berita tentang Seng Spandek luar biasa tahan puting beliungIni berita tentang Seng Spandek luar biasa tahan puting beliungIni berita tentang Seng Spandek luar biasa tahan puting beliungIni berita tentang Seng Spandek luar biasa tahan puting beliungIni berita tentang Seng Spandek luar biasa tahan puting beliung'
 			]
 		];
 		foreach($news_data as $data){

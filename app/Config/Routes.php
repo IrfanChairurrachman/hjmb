@@ -44,6 +44,9 @@ $routes->get('/artikel', 'Page::artikel');
 $routes->get('/about', 'Page::about');
 $routes->get('/contact', 'Page::contact');
 
+$routes->get('berita/(:num)/(:any)', 'Page::berita/$1');
+$routes->get('artikel/(:num)/(:any)', 'Page::artikel/$1');
+
 // LOGIN ROUTE
 $routes->get('login', 'Login::index');
 $routes->post('login/proses', 'Login::proses');

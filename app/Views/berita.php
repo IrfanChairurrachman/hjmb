@@ -9,11 +9,11 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="hero-cap pt-100">
-                        <h2> Blog</h2>
+                        <h2>Berita</h2>
                         <nav aria-label="breadcrumb ">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                                <li class="breadcrumb-item"><a href="#"> Blog</a></li>
+                                <li class="breadcrumb-item"><a href="/berita"> Berita</a></li>
                             </ol>
                         </nav>
                     </div>
@@ -35,13 +35,13 @@
                         <div class="blog_item_img">
                             <img class="card-img rounded-0" src="<?php echo base_url('uploads/'.$row['news_image']) ?>" alt="">
                             <a href="#" class="blog_item_date">
-                                <h3>15</h3>
-                                <p>Jan</p>
+                            <h3><?php $date = new DateTime($row['created_at']); echo $date->format('d')?></h3>
+                                <p><?= $date->format('M')?></p>
                             </a>
                         </div>
 
                         <div class="blog_details">
-                            <a class="d-inline-block" href="<?php $slug = str_replace(' ', '_', $row['news_title']);echo base_url('detail/'.$slug) ?>">
+                            <a class="d-inline-block" href="<?php $slug = str_replace(' ', '_', $row['news_title']);echo base_url('berita/'.$row['news_id'].'/'.$slug) ?>">
                                 <h2><?php echo $row['news_title']; ?></h2>
                             </a>
                             <p><?php echo $row['news_content']; ?></p>

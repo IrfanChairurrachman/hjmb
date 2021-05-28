@@ -39,6 +39,7 @@ class Articles extends Migration
 				'constraint'     => ['published', 'draft'],
 				'default'        => 'draft',
 			],
+			'created_at DATETIME DEFAULT CURRENT_TIMESTAMP'
 		]);
 
 		// Membuat primary key
