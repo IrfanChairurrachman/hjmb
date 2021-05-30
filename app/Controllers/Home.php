@@ -5,6 +5,7 @@ use App\Models\Product_model;
 use App\Models\Category_model;
 use App\Models\News_model;
 use App\Models\Info_model;
+use App\Models\Auth_model;
 
 class Home extends BaseController
 {
@@ -17,6 +18,7 @@ class Home extends BaseController
 		$this->category_model = new Category_model();
         $this->product_model = new Product_model();
 		$this->info_model = new Info_model();
+		$this->admin_model = new Auth_model();
     }
 
 	public function index()
@@ -25,18 +27,22 @@ class Home extends BaseController
 		$data['products'] = $this->product_model->getProduct();
 		return view('index', $data);
 	}
+
 	public function admin()
 	{
 		$data['info'] = $this->info_model->getInfo();
+		$data['admin'] = $this->admin_model->getUser();
 		// dd($data);
 		return view('admin', $data);
 	}
+
 	public function info_edit()
 	{
 		$data['info'] = $this->info_model->getInfo();
 		// dd($data);
 		return view('admin/info_edit', $data);
 	}
+
 	public function info_update()
 	{
 		$id = $this->request->getPost('info_id');
@@ -57,7 +63,33 @@ class Home extends BaseController
 			session()->setFlashdata('info', 'Updated Information successfully');
 			return redirect()->to(base_url('admin')); 
 		}
-		echo "UWAW";
-		return view('admin/info_edit', $data);
+	}
+
+	public function admin_edit()
+	{
+		$data['admin'] = $this->admin_model->getUser();
+		// dd($data['admin'][0]['name']);
+		return view('admin/admin_edit', $data);
+	}
+
+	public function admin_update()
+	{
+		$id = $this->request->getPost('id');
+		$data['admin'] = $this->admin_model->getUser();
+		$data = array(
+            'id' => $id,
+            'username' => $this->request->getPost('username'),
+            'name' => $data['admin'][0]['name'],
+            'email' => $data['admin'][0]['email'],
+            'password' => $this->request->getPost('password'),
+        );
+		// dd($data);
+		$ubah = $this->admin_model->updateUser($data, $id);
+
+		if($ubah)
+		{
+			session()->setFlashdata('info', 'Updated Admin successfully');
+			return redirect()->to(base_url('admin')); 
+		}
 	}
 }
