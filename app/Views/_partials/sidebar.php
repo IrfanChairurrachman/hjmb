@@ -36,19 +36,19 @@
                 </li>
                 <li class="nav-item">
                     <a href="<?php echo base_url('admin/news'); ?>" class="nav-link">
-                        <i class="nav-icon fas fa-dollar-sign"></i>
+                        <i class="nav-icon fas fa-pen-fancy"></i>
                         <p>Berita</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="<?php echo base_url('admin/article'); ?>" class="nav-link">
-                        <i class="nav-icon fas fa-dollar-sign"></i>
+                        <i class="nav-icon fas fa-quote-left"></i>
                         <p>Artikel</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="<?php echo base_url('admin/feedback'); ?>" class="nav-link">
-                        <i class="nav-icon fas fa-dollar-sign"></i>
+                        <i class="nav-icon fas fa-envelope"></i>
                         <p>Feedback</p>
                     </a>
                 </li>

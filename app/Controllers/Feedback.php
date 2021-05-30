@@ -33,8 +33,9 @@ class Feedback extends BaseController
     
     public function store()
     {
+        $validation =  \Config\Services::validation();
+
         $data = array(
-            'fb_id'     => $this->request->getPost('fb_id'),
             'fb_name'   => $this->request->getPost('fb_name'),
             'fb_subject'   => $this->request->getPost('fb_subject'),
             'fb_email'   => $this->request->getPost('fb_email'),
@@ -42,25 +43,19 @@ class Feedback extends BaseController
         );
 
         // dd($data);
-        $simpan = $this->fb_model->insertFb($data);
-        if($simpan)
-        {
-            session()->setFlashdata('success', 'Created Feedback successfully');
-            return redirect()->to(base_url('/contact')); 
+        
+        if($validation->run($data, 'fb') == FALSE){
+            session()->setFlashdata('inputs', $this->request->getPost());
+            session()->setFlashdata('errors', $validation->getErrors());
+            return redirect()->to(base_url('/contact'));
+        } else {
+            $simpan = $this->fb_model->insertFb($data);
+            if($simpan)
+            {
+                session()->setFlashdata('success', 'Masukan Anda Telah Kami Terima');
+                return redirect()->to(base_url('/contact')); 
+            }
         }
-        // if($validation->run($data, 'category') == FALSE){
-        //     session()->setFlashdata('inputs', $this->request->getPost());
-        //     session()->setFlashdata('errors', $validation->getErrors());
-        //     return redirect()->to(base_url('admin/category/create'));
-        // } else {
-        //     $model = new Category_model();
-        //     $simpan = $model->insertFb($data);
-        //     if($simpan)
-        //     {
-        //         session()->setFlashdata('success', 'Created Category successfully');
-        //         return redirect()->to(base_url('admin/category')); 
-        //     }
-        // }
     }
     
     public function delete($id)

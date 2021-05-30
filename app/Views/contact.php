@@ -6,15 +6,27 @@
     <div class="slider-area ">
         <div class="single-slider hero-overly slider-height2 d-flex align-items-center" data-background="assets/img/hero/profil.png">
             <div class="container">
-            <?php
-                if(!empty(session()->getFlashdata('success'))){ ?>
-                <div class="alert alert-success">
-                    <?php echo session()->getFlashdata('success');?>
-                </div>     
-            <?php } ?>
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="hero-cap pt-100">
+                        <?php
+                            if(!empty(session()->getFlashdata('success'))){ ?>
+                            <div class="alert alert-success">
+                                <?php echo session()->getFlashdata('success');?>
+                            </div>     
+                        <?php } ?>
+                        <?php 
+                            $errors = session()->getFlashdata('errors');
+                            if(!empty($errors)){ ?>
+                            <div class="alert alert-danger" role="alert">
+                                Whoops! Ada kesalahan saat input data, yaitu:
+                                <ul>
+                                <?php foreach ($errors as $error) : ?>
+                                    <li><?= esc($error) ?></li>
+                                <?php endforeach ?>
+                                </ul>
+                            </div>
+                        <?php } ?>
                             <h2>Kontak Kami</h2>
                             <nav aria-label="breadcrumb ">
                                 <ol class="breadcrumb">

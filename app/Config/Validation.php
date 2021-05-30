@@ -122,13 +122,13 @@ class Validation
 	 
 	public $article_errors = [
 		'article_title'  => [
-			'required'  => 'Judul berita wajib diisi.'
+			'required'  => 'Judul artikel wajib diisi.'
 		],
 		'article_author' => [
-			'required'  => 'Penulis berita wajib diisi.'
+			'required'  => 'Penulis artikel wajib diisi.'
 		],
 		'article_content'   => [
-			'required'          => 'konten berita wajib diisi.'
+			'required'          => 'konten artikel wajib diisi.'
 		],
 		'article_image'=> [
 			'mime_in'   => 'Gambar article hanya boleh diisi dengan jpg, jpeg, png atau gif.',
@@ -136,8 +136,67 @@ class Validation
 			'uploaded'  => 'Gambar article wajib diisi'
 		],
 		'article_status'=> [
-			'required'  => 'Status berita wajib diisi.'
+			'required'  => 'Status artikel wajib diisi.'
 		]
+	];
+
+	// ADMIINN
+	public $admin = [
+		'username'          => 'required',
+		'password'         => 'required',
+	];
+	 
+	public $admin_errors = [
+		'username'  => [
+			'required'  => 'Username wajib diisi.'
+		],
+		'password' => [
+			'required'  => 'Password wajib diisi.'
+		],
+	];
+
+	public $info = [
+		'info_name'          => 'required',
+		'info_contact1'         => 'required',
+		'info_email'         => 'required',
+		'info_alamat'         => 'required',
+	];
+	 
+	public $info_errors = [
+		'info_name'  => [
+			'required'  => 'Nama Perusahaan wajib diisi.'
+		],
+		'info_contact1' => [
+			'required'  => 'Kontak wajib diisi.'
+		],
+		'info_email' => [
+			'required'  => 'Email wajib diisi.'
+		],
+		'info_alamat' => [
+			'required'  => 'Alamat wajib diisi.'
+		],
+	];
+
+	public $fb = [
+		'fb_name'          => 'required',
+		'fb_subject'         => 'required',
+		'fb_email'         => 'required',
+		'fb_message'         => 'required',
+	];
+	 
+	public $fb_errors = [
+		'fb_name'  => [
+			'required'  => 'Nama wajib diisi.'
+		],
+		'fb_subject' => [
+			'required'  => 'Subjek wajib diisi.'
+		],
+		'fb_email' => [
+			'required'  => 'Email wajib diisi.'
+		],
+		'fb_message' => [
+			'required'  => 'Pesan wajib diisi.'
+		],
 	];
 	//--------------------------------------------------------------------
 	// Rules

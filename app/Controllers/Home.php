@@ -45,6 +45,8 @@ class Home extends BaseController
 
 	public function info_update()
 	{
+		$validation =  \Config\Services::validation();
+
 		$id = $this->request->getPost('info_id');
 
 		$data = array(
@@ -56,12 +58,18 @@ class Home extends BaseController
             'info_alamat' => $this->request->getPost('info_alamat'),
         );
 		// dd($data);
-		$ubah = $this->info_model->updateInfo($data, $id);
-
-		if($ubah)
-		{
-			session()->setFlashdata('info', 'Updated Information successfully');
-			return redirect()->to(base_url('admin')); 
+		if($validation->run($data, 'info') == FALSE){
+            session()->setFlashdata('inputs', $this->request->getPost());
+            session()->setFlashdata('errors', $validation->getErrors());
+            return redirect()->to(base_url('admin/info/edit/'.$id));
+        } else{
+			$ubah = $this->info_model->updateInfo($data, $id);
+	
+			if($ubah)
+			{
+				session()->setFlashdata('info', 'Updated Information successfully');
+				return redirect()->to(base_url('admin')); 
+			}
 		}
 	}
 
@@ -74,8 +82,12 @@ class Home extends BaseController
 
 	public function admin_update()
 	{
+
+		$validation =  \Config\Services::validation();
+
 		$id = $this->request->getPost('id');
 		$data['admin'] = $this->admin_model->getUser();
+
 		$data = array(
             'id' => $id,
             'username' => $this->request->getPost('username'),
@@ -84,12 +96,18 @@ class Home extends BaseController
             'password' => $this->request->getPost('password'),
         );
 		// dd($data);
-		$ubah = $this->admin_model->updateUser($data, $id);
-
-		if($ubah)
-		{
-			session()->setFlashdata('info', 'Updated Admin successfully');
-			return redirect()->to(base_url('admin')); 
+		if($validation->run($data, 'admin') == FALSE){
+            session()->setFlashdata('inputs', $this->request->getPost());
+            session()->setFlashdata('errors', $validation->getErrors());
+            return redirect()->to(base_url('admin/edit/'.$id));
+        } else{
+			$ubah = $this->admin_model->updateUser($data, $id);
+	
+			if($ubah)
+			{
+				session()->setFlashdata('info', 'Updated Admin successfully');
+				return redirect()->to(base_url('admin')); 
+			}
 		}
 	}
 }
