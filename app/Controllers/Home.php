@@ -23,8 +23,15 @@ class Home extends BaseController
 
 	public function index()
 	{
-		$data['news'] = $this->news_model->getNews();
-		$data['products'] = $this->product_model->getProduct();
+
+		$data['news'] = $this->news_model->limit('3')->getNews();
+		$data['news'] = array_reverse($data['news']);
+		$data['products'] = $this->product_model->limit('6')->getProduct();
+		$data['pipa'] = $this->product_model->where('category_id', 1)->findAll();
+		$data['spandek'] = $this->product_model->where('category_id', 2)->findAll();
+		$data['baja'] = $this->product_model->where('category_id', 3)->findAll();
+		$data['fiber'] = $this->product_model->where('category_id', 4)->findAll();
+		// dd($data);
 		return view('index', $data);
 	}
 
