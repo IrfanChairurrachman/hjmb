@@ -83,7 +83,7 @@
                       <li><a href="/">Beranda</a></li>
                       <li><a href="/about">Tentang</a></li>
                       <li><a href="/produk">Produk</a></li>
-                      <li><a href="/service">Layanan</a></li>
+                      <!-- <li><a href="/service">Layanan</a></li> -->
                       <li><a href="/berita">Berita</a>
                         <ul class="submenu">
                           <li><a href="/berita">Berita</a></li>

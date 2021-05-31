@@ -30,27 +30,30 @@
             <div class="col-lg-8 mb-5 mb-lg-0">
                 <div class="blog_left_sidebar">
 
-                <?php $nomor = 0; foreach($news as $key => $row){ ?>
-                    <article class="blog_item">
-                        <div class="blog_item_img">
-                            <img class="card-img rounded-0" src="<?php echo base_url('uploads/'.$row['news_image']) ?>" alt="">
-                            <a href="#" class="blog_item_date">
-                            <h3><?php $date = new DateTime($row['created_at']); echo $date->format('d')?></h3>
-                                <p><?= $date->format('M')?></p>
-                            </a>
-                        </div>
+                    <?php $nomor = 0;
+                    foreach ($news as $key => $row) { ?>
+                        <article class="blog_item">
+                            <div class="blog_item_img">
+                                <img class="card-img rounded-0" src="<?php echo base_url('uploads/' . $row['news_image']) ?>" alt="">
+                                <a href="#" class="blog_item_date">
+                                    <h3><?php $date = new DateTime($row['created_at']);
+                                        echo $date->format('d') ?></h3>
+                                    <p><?= $date->format('M') ?></p>
+                                </a>
+                            </div>
 
-                        <div class="blog_details">
-                            <a class="d-inline-block" href="<?php $slug = str_replace(' ', '_', $row['news_title']);echo base_url('berita/'.$row['news_id'].'/'.$slug) ?>">
-                                <h2><?php echo $row['news_title']; ?></h2>
-                            </a>
-                            <p><?php echo $row['news_content']; ?></p>
-                            <ul class="blog-info-link">
-                                <li><i class="fa fa-user"></i><?php echo $row['news_author']; ?></li>
-                            </ul>
-                        </div>
-                    </article>
-                <?php } ?>
+                            <div class="blog_details">
+                                <a class="d-inline-block" href="<?php $slug = str_replace(' ', '_', $row['news_title']);
+                                                                echo base_url('berita/' . $row['news_id'] . '/' . $slug) ?>">
+                                    <h2><?php echo $row['news_title']; ?></h2>
+                                </a>
+                                <p><?php echo $row['news_content']; ?></p>
+                                <ul class="blog-info-link">
+                                    <li><i class="fa fa-user"></i><?php echo $row['news_author']; ?></li>
+                                </ul>
+                            </div>
+                        </article>
+                    <?php } ?>
 
                     <nav class="blog-pagination justify-content-center d-flex">
                         <ul class="pagination">
@@ -90,86 +93,22 @@
                         </form>
                     </aside>
 
-                    <aside class="single_sidebar_widget post_category_widget">
-                        <h4 class="widget_title">Category</h4>
-                        <ul class="list cat-list">
-                            <li>
-                                <a href="#" class="d-flex">
-                                    <p>Resaurant food</p>
-                                    <p>(37)</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="d-flex">
-                                    <p>Travel news</p>
-                                    <p>(10)</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="d-flex">
-                                    <p>Modern technology</p>
-                                    <p>(03)</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="d-flex">
-                                    <p>Product</p>
-                                    <p>(11)</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="d-flex">
-                                    <p>Inspiration</p>
-                                    <p>21</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="d-flex">
-                                    <p>Health Care (21)</p>
-                                    <p>09</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </aside>
 
                     <aside class="single_sidebar_widget popular_post_widget">
                         <h3 class="widget_title">Recent Post</h3>
-                        <div class="media post_item">
-                            <img src="assets/img/post/post_1.png" alt="post">
-                            <div class="media-body">
-                                <a href="single-blog.html">
-                                    <h3>From life was you fish...</h3>
-                                </a>
-                                <p>January 12, 2019</p>
+                        <?php $nomor = 0;
+                        foreach ($news_recent as $key => $row) { ?>
+                            <div class="media post_item">
+                                <img src="<?php echo base_url('uploads/' . $row['news_image']) ?>" alt="post" width="50" height="50">
+                                <div class="media-body">
+                                    <a href="<?php $slug = str_replace(' ', '_', $row['news_title']);
+                                                echo base_url('berita/' . $row['news_id'] . '/' . $slug) ?>">
+                                        <h3><?php echo $row['news_title']; ?></h3>
+                                    </a>
+                                    <p><i class="fa fa-calendar"></i> <?=$row['created_at']; ?></p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="media post_item">
-                            <img src="assets/img/post/post_2.png" alt="post">
-                            <div class="media-body">
-                                <a href="single-blog.html">
-                                    <h3>The Amazing Hubble</h3>
-                                </a>
-                                <p>02 Hours ago</p>
-                            </div>
-                        </div>
-                        <div class="media post_item">
-                            <img src="assets/img/post/post_3.png" alt="post">
-                            <div class="media-body">
-                                <a href="single-blog.html">
-                                    <h3>Astronomy Or Astrology</h3>
-                                </a>
-                                <p>03 Hours ago</p>
-                            </div>
-                        </div>
-                        <div class="media post_item">
-                            <img src="assets/img/post/post_4.png" alt="post">
-                            <div class="media-body">
-                                <a href="single-blog.html">
-                                    <h3>Asteroids telescope</h3>
-                                </a>
-                                <p>01 Hours ago</p>
-                            </div>
-                        </div>
+                        <?php } ?>
                     </aside>
                     <aside class="single_sidebar_widget tag_cloud_widget">
                         <h4 class="widget_title">Tag Clouds</h4>

@@ -43,7 +43,7 @@ class Autoload extends AutoloadConfig
 		APP_NAMESPACE => APPPATH, // For custom app namespace
 		'Config'      => APPPATH . 'Config',
 	];
-
+	// $autoload['libraries'] = array('database');
 	/**
 	 * -------------------------------------------------------------------
 	 * Class Map
@@ -81,4 +81,6 @@ class Autoload extends AutoloadConfig
 	 * @var array<int, string>
 	 */
 	public $files = [];
+
+	
 }

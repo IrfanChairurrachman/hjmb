@@ -20,12 +20,18 @@ class Page extends BaseController
 	public function produk()
 	{
 		$data['products'] = $this->product_model->getProduct();
+		$data['pipa'] = $this->product_model->where('category_id', 1)->findAll();
+		$data['spandek'] = $this->product_model->where('category_id', 2)->findAll();
+		$data['baja'] = $this->product_model->where('category_id', 3)->findAll();
+		$data['fiber'] = $this->product_model->where('category_id', 4)->findAll();
 		return view('produk', $data);
 	}
 	public function berita($id = false)
 	{
 		if($id === false){
 			$data['news'] = $this->news_model->getNews();
+			$data['news_recent'] = $this->news_model->limit('3 ')->getNews();
+			$data['news_recent'] = array_reverse($data['news_recent']);
 			return view('berita', $data);
 		} else {
 			$data['news'] = $this->news_model->getNews($id);
