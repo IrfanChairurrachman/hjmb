@@ -28,8 +28,11 @@ class Page extends BaseController
 	}
 	public function berita($id = false)
 	{
+		$pager = \Config\Services::pager();
+
 		if($id === false){
-			$data['news'] = $this->news_model->getNews();
+			$data['news'] = $this->news_model->paginate(1, 'bootstrap');
+			$data['pager'] = $this->news_model->pager;
 			$data['news_recent'] = $this->news_model->limit('3 ')->getNews();
 			$data['news_recent'] = array_reverse($data['news_recent']);
 			return view('berita', $data);
