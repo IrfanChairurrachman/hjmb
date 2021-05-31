@@ -29,7 +29,7 @@ class News_model extends Model
     public function deleteNews($id)
     {
         return $this->db->table($this->table)->delete(['news_id' => $id]);
-    } 
+    }
 
 }
 ?>
