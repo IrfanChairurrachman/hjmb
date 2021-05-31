@@ -13,8 +13,10 @@
     - `php spark db:seed ArticlesSeeder`
     - `php spark db:seed CategorySeeder`
     - `php spark db:seed NewsSeeder`
+    - `php spark db:seed InformasiSeeder`
+    - `php spark db:seed FeedbackSeeder`
     - `php spark db:seed ProductsSeeder` (untuk produkseeder, categoryid sesuaikan dengan id category di table category db).
-8. Jalankan `php spark migrate`.
+8. Jalankan `php spark serve`.
 
 ## Mendapatkan Revisi dari Repo utama
 1. Daftarkan remote upstream dengan `git remote add upstream https://github.com/IrfanChairurrachman/hjmb.git`
