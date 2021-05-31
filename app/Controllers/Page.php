@@ -19,7 +19,10 @@ class Page extends BaseController
 
 	public function produk()
 	{
-		$data['products'] = $this->product_model->getProduct();
+		$pager = \Config\Services::pager();
+
+		$data['products'] = $this->product_model->paginate(6, 'bootstrap');
+		$data['pager'] = $this->product_model->pager;
 		$data['pipa'] = $this->product_model->where('category_id', 1)->findAll();
 		$data['spandek'] = $this->product_model->where('category_id', 2)->findAll();
 		$data['baja'] = $this->product_model->where('category_id', 3)->findAll();
@@ -31,7 +34,7 @@ class Page extends BaseController
 		$pager = \Config\Services::pager();
 
 		if($id === false){
-			$data['news'] = $this->news_model->paginate(1, 'bootstrap');
+			$data['news'] = $this->news_model->paginate(2, 'bootstrap');
 			$data['pager'] = $this->news_model->pager;
 			$data['news_recent'] = $this->news_model->limit('3 ')->getNews();
 			$data['news_recent'] = array_reverse($data['news_recent']);
@@ -47,8 +50,11 @@ class Page extends BaseController
 	// }
     public function artikel($id = false)
 	{
+		$pager = \Config\Services::pager();
+
 		if($id === false){
-			$data['article'] = $this->article_model->getArticle();
+			$data['article'] = $this->article_model->paginate(2, 'bootstrap');
+			$data['pager'] = $this->article_model->pager;
 			return view('artikel', $data);
 		} else {
 			$data['article'] = $this->article_model->getArticle($id);

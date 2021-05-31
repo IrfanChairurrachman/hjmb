@@ -83,6 +83,9 @@
                                     <?php } ?>
                                 </div>
                             </div>
+                            <nav class="blog-pagination justify-content-center d-flex">
+                                <?php echo $pager->links('bootstrap', 'bootstrap_pagination') ?>
+                            </nav>
                         </div>
                         <!-- Card TWO -->
                         <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
