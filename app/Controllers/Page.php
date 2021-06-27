@@ -27,6 +27,13 @@ class Page extends BaseController
 		$data['spandek'] = $this->product_model->where('category_id', 2)->findAll();
 		$data['baja'] = $this->product_model->where('category_id', 3)->findAll();
 		$data['fiber'] = $this->product_model->where('category_id', 4)->findAll();
+
+		foreach($data as $type => $each){
+			foreach($each as $key => $row){
+				$data[$type][$key]['product_image'] = explode(',', $row['product_image']);
+			}
+		}
+		// dd($data);
 		return view('produk', $data);
 	}
 	public function berita($id = false)

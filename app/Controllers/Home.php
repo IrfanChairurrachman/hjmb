@@ -27,10 +27,10 @@ class Home extends BaseController
 		$data['news'] = $this->news_model->limit('3')->getNews();
 		$data['news'] = array_reverse($data['news']);
 		$data['products'] = $this->product_model->limit('6')->getProduct();
-		$data['pipa'] = $this->product_model->where('category_id', 1)->findAll();
-		$data['spandek'] = $this->product_model->where('category_id', 2)->findAll();
-		$data['baja'] = $this->product_model->where('category_id', 3)->findAll();
-		$data['fiber'] = $this->product_model->where('category_id', 4)->findAll();
+		
+		foreach($data['products'] as $key => $row){
+            $data['products'][$key]['product_image'] = explode(',', $row['product_image']);
+        }
 		// dd($data);
 		return view('index', $data);
 	}

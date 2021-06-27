@@ -128,7 +128,9 @@
                                         <div class="col-lg-4 col-md-6">
                                             <div class="single-project mb-30">
                                                 <div class="project-img">
-                                                    <img src="<?php echo base_url('uploads/' . $row['product_image']) ?>" alt="">
+                                                    <?php foreach($row['product_image'] as $image){ ?>
+                                                        <img src="<?php echo base_url('uploads/'.$image) ?>" alt="">
+                                                    <?php } ?>
                                                 </div>
                                                 <div class="project-cap">
                                                     <a href="/produk" class="plus-btn"><i class="ti-plus"></i></a>

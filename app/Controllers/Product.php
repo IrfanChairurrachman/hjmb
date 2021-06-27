@@ -18,6 +18,11 @@ class Product extends Controller
     public function index()
     {
         $data['products'] = $this->product_model->getProduct();
+        // $data['products']['product_image'] = explode(',', $data['products']['product_image']);
+        foreach($data['products'] as $key => $row){
+            $data['products'][$key]['product_image'] = explode(',', $row['product_image']);
+        }
+        // dd($data['products']);
         echo view('admin/product', $data);
     }
     
@@ -33,16 +38,38 @@ class Product extends Controller
         $validation =  \Config\Services::validation();
     
         // get file upload
-        $image = $this->request->getFile('product_image');
-        // random name file
-        $name = $image->getRandomName();
+        // $image = $this->request->getFile('product_image');
+        // $files = $this->request->getFileMultiple('product_images');
+        // // random name file
+        // dd($files);
+
+        $listimg = array();
+        if($files = $this->request->getFileMultiple('product_images'))
+        {
+            foreach($files as $img)
+            {
+                if ($img->isValid() && ! $img->hasMoved())
+                {
+                    $newName = $img->getRandomName();
+                    $img->move(ROOTPATH . 'public/uploads', $newName);
+                    array_push($listimg, $newName);
+                }
+            }
+        }
+        // dd($listimg);
+
+        $images = implode(',', $listimg);
+
+        // dd($images);
+
+        // $name = $image->getRandomName();
     
         $data = array(
             'category_id'           => $this->request->getPost('category_id'),
             'product_name'          => $this->request->getPost('product_name'),
             'product_price'         => $this->request->getPost('product_price'),
             'product_status'        => $this->request->getPost('product_status'),
-            'product_image'         => $name,
+            'product_image'         => $images,
             'product_description'   => $this->request->getPost('product_description'),
         );
         // dd($data);
@@ -52,7 +79,7 @@ class Product extends Controller
             return redirect()->to(base_url('admin/product/create'));
         } else {
             // upload file 
-            $image->move(ROOTPATH . 'public/uploads', $name);
+            // $image->move(ROOTPATH . 'public/uploads', $name);
             // insert
             $simpan = $this->product_model->insertProduct($data);
             if($simpan)
@@ -74,6 +101,10 @@ class Product extends Controller
         $data['categories'] = ['' => 'Pilih Category'] + array_column($categories, 'category_name', 'category_id');
     
         $data['product'] = $this->product_model->getProduct($id);
+
+        // $data['product']['product_image'] = explode(',', $data['product']['product_image']);
+
+        // dd($data['product']['product_image']);
         echo view('admin/product_edit', $data);
     }
 

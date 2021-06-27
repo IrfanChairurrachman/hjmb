@@ -84,8 +84,9 @@
                   <div class="form-group">
                     <?php 
                       echo form_label('Gambar');
-                      echo form_upload('product_image', '', ['class' => 'form-control']); 
-                    ?>
+                      // echo form_upload('product_image[]', '', ['class' => 'form-control']);
+                      ?>
+                      <input type="file" class = "form-control" name="product_images[]" multiple />
                   </div>
                 </div>
               </div>

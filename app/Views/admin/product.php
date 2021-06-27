@@ -65,7 +65,11 @@
                                         <?php $nomor = 0; foreach($products as $key => $row){ ?>
                                         <tr>
                                             <td class="text-center"><?php echo ++$nomor; ?></td>
-                                            <td><img src="<?php echo base_url('uploads/'.$row['product_image']) ?>" class="rounded-circle" width="50" height="50"></td>
+                                            <td>
+                                            <?php foreach($row['product_image'] as $image){ ?>
+                                                <img src="<?php echo base_url('uploads/'.$image) ?>" class="rounded-circle" width="50" height="50">
+                                            <?php } ?>
+                                            </td>
                                             <td><?php echo $row['product_name']; ?></td>
                                             <td><?php echo $row['category_name']; ?></td>
                                             <td><?php echo "Rp. ".number_format($row['product_price']); ?></td>

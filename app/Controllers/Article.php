@@ -34,31 +34,32 @@ class Article extends Controller
         // get file upload
         $image = $this->request->getFile('article_image');
         // random name file
-        $name = $image->getRandomName();
+        echo $image;
+        // $name = $image->getRandomName();
     
-        $data = array(
-            'article_title'          => $this->request->getPost('article_title'),
-            'article_author'         => $this->request->getPost('article_author'),
-            'article_status'        => $this->request->getPost('article_status'),
-            'article_image'         => $name,
-            'article_content'   => $this->request->getPost('article_content'),
-        );
-        // dd($data);
-        if($validation->run($data, 'article') == FALSE){
-            session()->setFlashdata('inputs', $this->request->getPost());
-            session()->setFlashdata('errors', $validation->getErrors());
-            return redirect()->to(base_url('admin/article/create'));
-        } else {
-            // upload file 
-            $image->move(ROOTPATH . 'public/uploads', $name);
-            // insert
-            $simpan = $this->article_model->insertArticle($data);
-            if($simpan)
-            {
-                session()->setFlashdata('success', 'Created article successfully');
-                return redirect()->to(base_url('admin/article')); 
-            }
-        }
+        // $data = array(
+        //     'article_title'          => $this->request->getPost('article_title'),
+        //     'article_author'         => $this->request->getPost('article_author'),
+        //     'article_status'        => $this->request->getPost('article_status'),
+        //     'article_image'         => $name,
+        //     'article_content'   => $this->request->getPost('article_content'),
+        // );
+        // // dd($data);
+        // if($validation->run($data, 'article') == FALSE){
+        //     session()->setFlashdata('inputs', $this->request->getPost());
+        //     session()->setFlashdata('errors', $validation->getErrors());
+        //     return redirect()->to(base_url('admin/article/create'));
+        // } else {
+        //     // upload file 
+        //     $image->move(ROOTPATH . 'public/uploads', $name);
+        //     // insert
+        //     $simpan = $this->article_model->insertArticle($data);
+        //     if($simpan)
+        //     {
+        //         session()->setFlashdata('success', 'Created article successfully');
+        //         return redirect()->to(base_url('admin/article')); 
+        //     }
+        // }
     }
     public function show($id)
     {  
