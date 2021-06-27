@@ -45,11 +45,13 @@
                     <div class="form-group">
                       <?php echo form_label('Image', 'Image'); ?>
                       <br>
-                      <img src="<?php echo base_url('uploads/'.$product['product_image']) ?>" class="img-fluid">
+                      <?php foreach($product['product_image'] as $image){ ?>
+                          <img src="<?php echo base_url('uploads/'.$image) ?>" class="img-fluid">
+                      <?php } ?>
                       <br>
                       <br>
                       <?php echo form_label('Ganti Image', 'Ganti Image'); ?>
-                      <?php echo form_upload('product_image', $product['product_image'], ['class' => 'form-control', 'placeholder' => 'Product Image']); ?>
+                      <input type="file" class = "form-control" name="product_images[]" multiple />
                     </div>
                   </div>
                   <div class="col-md-8">

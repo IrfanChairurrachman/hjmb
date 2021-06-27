@@ -92,6 +92,7 @@ class Product extends Controller
     public function show($id)
     {  
         $data['product'] = $this->product_model->getProduct($id);
+        $data['product']['product_image'] = explode(',', $data['product']['product_image']);
         echo view('admin/product_show', $data);
     }
     
@@ -101,7 +102,7 @@ class Product extends Controller
         $data['categories'] = ['' => 'Pilih Category'] + array_column($categories, 'category_name', 'category_id');
     
         $data['product'] = $this->product_model->getProduct($id);
-
+        $data['product']['product_image'] = explode(',', $data['product']['product_image']);
         // $data['product']['product_image'] = explode(',', $data['product']['product_image']);
 
         // dd($data['product']['product_image']);
@@ -114,17 +115,32 @@ class Product extends Controller
     
         $validation =  \Config\Services::validation();
     
-        // get file
-        $image = $this->request->getFile('product_image');
-        // random name file
-        $name = $image->getRandomName();
+        // // get file
+        // $image = $this->request->getFile('product_image');
+        // // random name file
+        // $name = $image->getRandomName();
+        $listimg = array();
+        if($files = $this->request->getFileMultiple('product_images'))
+        {
+            foreach($files as $img)
+            {
+                if ($img->isValid() && ! $img->hasMoved())
+                {
+                    $newName = $img->getRandomName();
+                    $img->move(ROOTPATH . 'public/uploads', $newName);
+                    array_push($listimg, $newName);
+                }
+            }
+        }
+
+        $images = implode(',', $listimg);
     
         $data = array(
             'category_id'           => $this->request->getPost('category_id'),
             'product_name'          => $this->request->getPost('product_name'),
             'product_price'         => $this->request->getPost('product_price'),
             'product_status'        => $this->request->getPost('product_status'),
-            'product_image'         => $name,
+            'product_image'         => $images,
             'product_description'   => $this->request->getPost('product_description'),
         );
         
@@ -134,7 +150,7 @@ class Product extends Controller
             return redirect()->to(base_url('admin/product/edit/'.$id));
         } else {
             // upload
-            $image->move(ROOTPATH . 'public/uploads', $name);
+            // $image->move(ROOTPATH . 'public/uploads', $name);
             // update
             $ubah = $this->product_model->updateProduct($data, $id);
             if($ubah)

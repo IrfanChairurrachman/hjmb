@@ -26,7 +26,9 @@
             <div class="card-body">
               <div class="row">
                 <div class="col-md-4">
-                  <img src="<?php echo base_url('uploads/'.$product['product_image']) ?>" class="img-fluid">
+                  <?php foreach($product['product_image'] as $image){ ?>
+                      <img src="<?php echo base_url('uploads/'.$image) ?>" class="img-fluid">
+                  <?php } ?>
                 </div>
                 <div class="col-md-8">
                   <dl class="dl-horizontal">
